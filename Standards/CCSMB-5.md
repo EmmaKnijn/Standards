@@ -51,10 +51,10 @@ A valid packet should look like this. Being transmitted on channel `5836` with r
 }
 ```
 
-
 In order to be compliant the
 - protocol field MUST be "PASC"
 - client MUST be able to deal with crosstalk by allowing the user to select a station if there are multiple stations on a single channel
+- server MUST set the replyChannel to 759, the discovery channel
 - client MUST reject a packet with an invalid `protocol` field
 - server MUST include all broadcasting channels in the `metadata.alternative` field (including the channel the packet is being sent on), except if no `metadata.alternative` field is provided.
 - server MUST time the packets appropriately in a way that the client is just able to play back the buffer.
@@ -72,7 +72,7 @@ In order to be compliant the
 The other audio channels are free to be assigned to whatever is desired
 
 ## Discovery
-A discovery packet is sent over channel 759 and must contain the following fields in a table:
+A discovery packet MUST be sent over channel 759 and MUST contain the following fields in a table:
 - `type`: The type of request
 
 The following fields are required only for servers responding to a discovery packet
